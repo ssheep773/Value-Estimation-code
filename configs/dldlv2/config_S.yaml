@@ -1,0 +1,26 @@
+data:
+  output_dir: "results/Approximation_235/"
+  data_dir: "datasetApproximation/235-kfold-0-149"
+
+heads:
+  - tag: "S"
+    type: dldl_v2
+    labels: !include label/labels-S-32.yaml  # 再來就是處理label
+    weight: 1
+    metric: ["mae"]
+
+model:
+  architecture: "mobilenetv2"
+  use_pretrained: True
+  input_size: [256, 256]
+
+optimizer:
+  num_workers: 2
+  num_epochs: 2
+  batch_size: 16
+  improve_patience: 100
+  lr: 0.0001
+  betas: [0.9, 0.999]
+  eps: 0.00000001
+  algo: "adam"
+
